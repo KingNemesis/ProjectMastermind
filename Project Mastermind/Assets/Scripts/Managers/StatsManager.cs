@@ -6,6 +6,19 @@ using System;
 [Serializable]
 public class StatsManager : MonoBehaviour  //This class provides save system integrity and can be used to access most useful info without referencing one billion managers.
 {
+    //DATA STORAGE VARS
+    private int newPlansCreated = 0;
+    private int newPlansCompleted = 0;
+    private int newPlansInterrupted = 0;
+    private int newPlayerActions = 0;
+    private int newCombatDuration = 0;
+
+    string[] reportStrings = new string[15]; //15 is the total number of agents in the scene.
+    int agentReportStep = 0;
+    bool saveOnce = true;
+
+
+
     //TODO: Convert stuff to protected internal.
     //The type or member can be accessed by any code in the assembly in which it is declared, or from within a derived class in another assembly.
     //We use this to let changes happen only from Game Manager which derives from this class.
@@ -65,12 +78,63 @@ public class StatsManager : MonoBehaviour  //This class provides save system int
     public int faith = 11;
     public int luck = 11;
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F4))
+        {
+            InitSave();
+        }
+    }
+
+    public void LogAgent(string agentID, int plansCreated, int plansCompleted, int plansInterrupted, int playerActions,
+        int combatDuration, List<string> combatLog)
+    {
+        newPlansCreated += plansCreated; //Session stats (also added to total stats)
+        newPlansCompleted += plansCompleted;
+        newPlansInterrupted += plansInterrupted;
+        newPlayerActions += playerActions;
+        newCombatDuration += combatDuration;
+
+        string agentString = "";
+        agentString += agentID + "," + plansCreated + "," + plansCompleted + "," 
+            + plansInterrupted + "," + playerActions + "," + combatDuration;
+        foreach (string info in combatLog)
+        {
+            if (agentString != "")
+            {
+                agentString += ",";
+            }
+            agentString += info;
+        }
+
+        agentString += "," + System.DateTime.Now.ToString();
+
+        reportStrings[agentReportStep] = agentString;
+
+        agentReportStep++;
+
+        //Debug.Log(agentString);
+    }
 
     //SAVE-LOAD OPS
-    public bool InitSave() //Start the saving process
+    public void InitSave() //Start the saving process
     {
-        //ToDo some weird stuff to lock everything - Then call Save method.
-        return true;
+        //1. Readline total stats
+        //2. Update total stats
+        //3. Append session
+        //4. Append Agents
+        
+        if (saveOnce)
+        {
+            CSV_Manager.AppendToReportSession(reportStrings, newPlansCreated, newPlansCompleted,
+                newPlansInterrupted, newPlayerActions, newCombatDuration);
+
+            saveOnce = false;
+        }
+        else
+        {
+            Debug.Log("Can't save more than once. Please restart the game.");
+        }
     }
     //GETTERS
     public Vector3 GetPlayerPos()

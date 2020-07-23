@@ -22,9 +22,21 @@ public class SceneSwitch : MonoBehaviour
 
     public void LoadScene(int index)
     {
+        GameObject.FindGameObjectWithTag("Manager").GetComponent<StatsManager>().InitSave();
+
         SceneManager.LoadScene(index);
     }
 
+    public void SaveAndExitGame()
+    {
+        GameObject.FindGameObjectWithTag("Manager").GetComponent<StatsManager>().InitSave();
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
     public void ExitGame()
     {
 

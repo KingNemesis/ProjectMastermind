@@ -9,7 +9,7 @@ public class AddStat : ConsumableItem
 
     public override void OnConsume(FastStats stats)
     {
-        Debug.Log("Add value: " + addValue);
+        Debug.Log("Player healed for " + addValue);
 
         if (isMana)
         {

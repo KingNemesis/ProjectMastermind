@@ -81,13 +81,14 @@ public class A_SecondMeleeAction : GoapAction
         NavMeshAgent navAgent = (NavMeshAgent)agent.GetComponentInChildren(typeof(NavMeshAgent));
         //GameObject damageCollider = agent.GetComponent<GoapCore>().damageCollider;
         AnimatorHook animatorHook = agent.GetComponentInChildren<AnimatorHook>();
+        GoapMemory goapM = agent.GetComponentInChildren<GoapMemory>();
 
         //navAgent.enabled = false;
 
         //anim.SetFloat("movement", 0f, 0.1f, Time.deltaTime);
         //anim.SetFloat("sideways", 0f, 0.1f, Time.deltaTime);
 
-                                               //Becomes true only on animator exit script... 
+        //Becomes true only on animator exit script... 
         if (anim.GetBool("actionSuccess_AI")) //...if action is complete and successful
         {
             /*
@@ -101,7 +102,8 @@ public class A_SecondMeleeAction : GoapAction
             navAgent.enabled = true;
             animatorHook.CloseDamageCollider();
             anim.SetBool("actionSuccess_AI", false);
-            Debug.Log("Attack 2 has ended!");
+            goapM.AddAgentAction(animAction);
+            //Debug.Log("Attack 2 has ended!");
 
             return true;
         }

@@ -81,6 +81,7 @@ public class B_FirstMeleeAttack : GoapAction
         Animator anim = (Animator)agent.GetComponentInChildren(typeof(Animator));
         NavMeshAgent navAgent = (NavMeshAgent)agent.GetComponentInChildren(typeof(NavMeshAgent));
         AnimatorHook animatorHook = agent.GetComponentInChildren<AnimatorHook>();
+        GoapMemory goapM = agent.GetComponentInChildren<GoapMemory>();
 
         //Becomes true only on animator exit script... 
         if (anim.GetBool("actionSuccess_AI")) //...if action is complete and successful (
@@ -106,7 +107,8 @@ public class B_FirstMeleeAttack : GoapAction
             anim.SetFloat("sideways", relativeDirection.x, 0.1f, Time.deltaTime);
             //TEST
 
-            Debug.Log("B Attack 1 has ended!");
+            goapM.AddAgentAction(animAction);
+            //Debug.Log("B Attack 1 has ended!");
 
             return true;
         }

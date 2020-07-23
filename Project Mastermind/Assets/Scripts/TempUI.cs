@@ -18,21 +18,21 @@ public class TempUI : MonoBehaviour
 
     public Slider healthSlider;
     public Slider healthDamageSlider;
-    public Slider manaSlider;
+    //public Slider manaSlider;
     public Slider staminaSlider;
 
     float targetHealth;
-    float targetMana;
+    //float targetMana;
     float targetStamina;
 
     float currentHealth;
-    float currentMana;
+    //float currentMana;
     float currentStamina;
 
     private void Awake()
     {
         currentHealth = 100f;
-        currentMana = 100f;
+        //currentMana = 100f;
         currentStamina = 100f;
 
         singleton = this;
@@ -45,8 +45,8 @@ public class TempUI : MonoBehaviour
         currentHealth = Mathf.SmoothStep(currentHealth, targetHealth, delta / 0.18f);
         healthDamageSlider.value = currentHealth;
 
-        currentMana = Mathf.SmoothStep(currentMana, targetMana, delta / 0.18f);
-        manaSlider.value = currentMana;
+        //currentMana = Mathf.SmoothStep(currentMana, targetMana, delta / 0.18f);
+        //manaSlider.value = currentMana;
 
         currentStamina = Mathf.SmoothStep(currentStamina, targetStamina, delta / 0.18f);
         staminaSlider.value = currentStamina;
@@ -78,7 +78,7 @@ public class TempUI : MonoBehaviour
         healthSlider.value = health;
         targetHealth = health;
         targetStamina = stamina;
-        targetMana = mana;
+        //targetMana = mana;
     }
 
     public void UpdateQuickSlotForItem(Item targetItem, bool isLeft)

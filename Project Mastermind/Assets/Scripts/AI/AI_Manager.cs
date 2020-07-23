@@ -62,7 +62,7 @@ public class AI_Manager : MonoBehaviour
     {
         //TODO: REGISTER PROCESS
         newAgentID++;       //tricks
-        return newAgentID-1;
+        return newAgentID;
     }
     public int ProvideGoalForAgent(int agentID)
     {

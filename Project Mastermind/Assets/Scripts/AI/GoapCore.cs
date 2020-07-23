@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 
-//V2.3
-//FINAL VERSION FOR PROJECT SOUL (Current build is Alpha) 
+//V3.0
+//FINAL VERSION FOR PROJECT MASTERMIND (2.4 AND PRIOR WAS NAMED PROJECT SOUL)
 public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEntity, IParryable 
 {
     /*
@@ -25,6 +25,8 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
     private IGoap dataProvider;  //Current AI class that provides world data and listens to feedback on planning.
     private GoapPlanner planner;
     private int goalGeneratorID = 1;
+
+    private GoapMemory goapMemory; //The memory class we store information about player/agent actions.
 
     //Animation vars
     new Rigidbody rigidbody;
@@ -63,7 +65,8 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
     //Helper vars
     private int agentID;
     public bool enableConsoleMessages = true;
-    public Transform lockOnTarget; 
+    public Transform lockOnTarget;
+    private bool isAwareOnce = true;
     
     void Start()
     {
@@ -75,9 +78,7 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
         agent = GetComponentInChildren<NavMeshAgent>();
         rigidbody.isKinematic = false;
         animatorHook = GetComponentInChildren<AnimatorHook>();
-
-        //NEXT LEVEL SHIT
-        //agentID = GameObject.FindGameObjectWithTag("Manager").GetComponent<AI_Manager>().RegisterNewAgent(this.gameObject);
+                
         agentID = UnityEngine.Random.Range(0, 100);
         stateMachine = new FSM();
         availableActions = new HashSet<GoapAction>();
@@ -91,9 +92,8 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
 
         stateMachine.pushState(idleState);
         loadActions();
-        //Debug.Log("Agent Init");
-        //loadActions
-        
+
+        goapMemory = GetComponentInChildren<GoapMemory>();        
     }
     private void Update()
     {
@@ -378,7 +378,15 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
 
         goalGeneratorID = 2;
 
-        //TODO: TEST THIS OUT
+        if (isAwareOnce) //patch --- was being called more than once sometimes
+        {
+            goapMemory.Init(); //Initiating the memory module.
+
+            //NEXT LEVEL SHIT
+            agentID = GameObject.FindGameObjectWithTag("Manager").GetComponent<AI_Manager>().RegisterNewAgent(this.gameObject);
+
+            isAwareOnce = false;
+        }        
         stateMachine.popState();
         stateMachine.pushState(idleState);
     }
@@ -423,7 +431,8 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
             // Defensive ->Pulling defensive stats here
             int totalDamageTaken = this.GetComponent<CombatStats>().CalculateFinalDamageTaken(action.damage, action.damageType);
             health -= totalDamageTaken;
-            Debug.Log(agentID + " received " + totalDamageTaken + " new health is " + health);
+            FloatingTextController.CreateFloatingText(totalDamageTaken.ToString(),this.transform.position); //Creating the floating combat text
+            Debug.Log("Agent " + agentID + " received " + totalDamageTaken + "damage. New health is " + health);
 
             animatorHook.CloseDamageCollider(); //for safety
 
@@ -432,6 +441,8 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
             {
                 PlayTargetAnimation("Death", true);
                 animator.transform.parent = null; // in order for ragdoll to properly work
+
+                goapMemory.AgentDeath();
                 gameObject.SetActive(false); // could just destroy instead of disabling
             }
             else
@@ -552,7 +563,8 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
         // Defensive ->Pulling defensive stats here
         int totalDamageTaken = this.GetComponent<CombatStats>().CalculateFinalDamageTaken(15, "Physical"); //HARDCODE
         health -= totalDamageTaken;
-        Debug.Log("Agent " + agentID + " received SPECIAL" + totalDamageTaken + " damage. New health is " + health);
+        FloatingTextController.CreateFloatingText(totalDamageTaken.ToString(), this.transform.position); //Creating the floating combat text
+        Debug.Log("Agent " + agentID + " received SPECIAL " + totalDamageTaken + " damage. New health is " + health);
 
         animatorHook.CloseDamageCollider(); //for safety
 
@@ -596,6 +608,10 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
 
     }
     //HELPER METHODS
+    public int GetAgentID()
+    {
+        return agentID;
+    }
     public static string prettyPrint(HashSet<KeyValuePair<string, object>> state)
     {
         String s = "";

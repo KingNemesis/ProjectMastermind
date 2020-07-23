@@ -25,6 +25,8 @@ public abstract class Warrior : MonoBehaviour, IGoap
 
     public float moveSpeed = 2; //used in goap core currently --- v2.3
 
+    private GoapMemory goapMemory;
+
 
     void Start()
     {
@@ -43,6 +45,8 @@ public abstract class Warrior : MonoBehaviour, IGoap
 
         this.navAgent = this.gameObject.GetComponentInChildren<NavMeshAgent>();
         this.anim = this.gameObject.GetComponentInChildren<Animator>();
+
+        goapMemory = GetComponentInChildren<GoapMemory>();
     }
 
     void Update()
@@ -89,12 +93,18 @@ public abstract class Warrior : MonoBehaviour, IGoap
     {
         // Yay we found a plan for our goal
         Debug.Log("<color=green>Plan found</color> " + GoapAgent.prettyPrint(actions));
+
+        //NOTE: If we implement plan out of combat we have to filter here.
+        goapMemory.AddAgentPlan(GoapAgent.prettyPrint(actions));
     }
 
     public void actionsFinished()
     {
         // Everything is done, we completed our actions for this goal. Hooray!
         Debug.Log("<color=blue>Actions completed</color>");
+
+        //NOTE: If we implement plan out of combat we have to filter here.
+        goapMemory.AddAgentPlanComplete();
     }
 
     public void planAborted(GoapAction aborter)
