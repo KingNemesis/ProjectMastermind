@@ -37,7 +37,7 @@ public class C_FourthMeleeAction : GoapAction
 
     public override bool requiresInRange()
     {
-        return true; // yes we need to be near an enemy to attack.
+        return false; // yes we need to be near an enemy to attack.
     }
 
     public override bool checkProceduralPrecondition(GameObject agent)
@@ -163,13 +163,16 @@ public class C_FourthMeleeAction : GoapAction
                 {
                     agent.GetComponent<GoapCore>().PlayTargetAnimation(this.animAction, true);
                     actionFlag = true;
-                    animatorHook.OpenDamageCollider();
-                    recoveryTimer = 2f; //TODO: Current action recovery time.
-                    //PLAY SOUND/UI STUFF HERE
+                    animatorHook.CloseDamageCollider();
+                    recoveryTimer = agent.GetComponent<GoapCore>().GetCurrentAnimationTime();
+                    if (recoveryTimer >= 1f)
+                    {
+                        recoveryTimer = 1f;
+                    }
+                    SoundManager.PlaySound(SoundManager.Sound.Roll, this.transform.position);
                 }
             }
         }
-
         return true;
     }
 }

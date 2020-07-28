@@ -13,6 +13,7 @@ public class HealAction : GoapAction
     private float recoveryTimer;
 
     public float costRaisePerUse = 10f;
+    public int healAmount = 15;
 
     public HealAction()
     {
@@ -145,7 +146,7 @@ public class HealAction : GoapAction
                  {
                     recoveryTimer = 1f;
                  }
-                 goapC.HealSelf(15);
+                 goapC.HealSelf(healAmount);
                  SoundManager.PlaySound(SoundManager.Sound.EstusDrink, this.transform.position);                
             }
         }

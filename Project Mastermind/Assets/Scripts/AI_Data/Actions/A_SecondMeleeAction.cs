@@ -157,7 +157,12 @@ public class A_SecondMeleeAction : GoapAction
                     actionFlag = true;
                     animatorHook.OpenDamageCollider();
                     recoveryTimer = agent.GetComponent<GoapCore>().GetCurrentAnimationTime();
-                    //PLAY SOUND/UI STUFF HERE
+                    if(recoveryTimer >= 1f)
+                    {
+                        recoveryTimer = 1f;
+                    }
+
+                    SoundManager.PlaySound(SoundManager.Sound.ShieldSwing, this.transform.position);
                 }
             }
         }

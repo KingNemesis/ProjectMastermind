@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using System;
+using UnityEngine.UI;
 
 //V3.0
 //FINAL VERSION FOR PROJECT MASTERMIND (2.4 AND PRIOR WAS NAMED PROJECT SOUL)
@@ -66,7 +67,8 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
 
 
     //Helper vars
-    private int agentID;
+    public int agentID = 1;
+    public int lootBonusScore = 800;
     public bool enableConsoleMessages = true;
     public Transform lockOnTarget;
     private bool isAwareOnce = true;
@@ -82,7 +84,7 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
         rigidbody.isKinematic = false;
         animatorHook = GetComponentInChildren<AnimatorHook>();
                 
-        agentID = UnityEngine.Random.Range(0, 100);
+        //agentID = UnityEngine.Random.Range(0, 100);
         stateMachine = new FSM();
         availableActions = new HashSet<GoapAction>();
         currentActions = new Queue<GoapAction>();
@@ -349,7 +351,7 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
         AnimatorStateInfo animationState = animator.GetCurrentAnimatorStateInfo(0);
         AnimatorClipInfo[] myAnimatorClip = animator.GetCurrentAnimatorClipInfo(0);
         float myTime = myAnimatorClip[0].clip.length * animationState.normalizedTime;
-        Debug.Log("Current animation time is " + myTime);
+        //Debug.Log("Current animation time is " + myTime);
         return myTime;
     }
     public void HandleRotation(float delta, GameObject target)
@@ -405,7 +407,7 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
             goapMemory.Init(); //Initiating the memory module.
 
             //NEXT LEVEL SHIT
-            agentID = GameObject.FindGameObjectWithTag("Manager").GetComponent<AI_Manager>().RegisterNewAgent(this.gameObject);
+            //agentID = GameObject.FindGameObjectWithTag("Manager").GetComponent<AI_Manager>().RegisterNewAgent(this.gameObject);
 
             isAwareOnce = false;
         }        
@@ -622,13 +624,17 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
     }
     private void AgentDeath()
     {
+        SoundManager.PlaySound(SoundManager.Sound.EnemyDie, this.transform.position);
+
         PlayTargetAnimation("Death", true);
         animator.transform.parent = null; // in order for ragdoll to properly work
 
         goapMemory.AgentDeath();
         gameObject.SetActive(false); // could just destroy instead of disabling
 
-        //TODO LOOT?
+        Text scoreT = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<Text>();
+        scoreT.text = (Int32.Parse(scoreT.text) + 800).ToString();
+
     }
     public HashSet<GoapAction> GetAvailableActions()
     {

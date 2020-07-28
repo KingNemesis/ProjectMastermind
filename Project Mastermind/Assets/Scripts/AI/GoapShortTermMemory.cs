@@ -14,6 +14,9 @@ public class GoapShortTermMemory : MonoBehaviour
     public int playerDodgeTH = 2;
 
     private bool healOnce = true;
+    public bool playerAtkTriggerOnce = true;
+    public bool playerDodgeTriggerOnce = true;
+    public bool playerHealTriggerOnce = true;
     private int playerAttacks = 0;
     private int playerHeals = 0;
     private int playerDodges = 0;
@@ -66,17 +69,150 @@ public class GoapShortTermMemory : MonoBehaviour
     {
         //DO STUFF BASED ON AVAILABLE ACTIONS
         //what if player is offensive and we are offensive?
-        Debug.Log("GOAP STM -> P Attacks Trigger");
+        if (playerAtkTriggerOnce)
+        {
+            if (AI_Behaviour == "Offensive")
+            {
+                bool berserkFound = false;
+
+                foreach (GoapAction a in availableActions)
+                {
+                    if (a.GetType().Name == "BerserkAction")
+                    {
+                        a.cost -= 100;
+                        goapC.IsInterruptedFromPlayer(); //Sets the Agent to replan after current action is finished.                
+                        berserkFound = true;
+                    }
+                }
+                if (!berserkFound)
+                {
+                    foreach (GoapAction a in availableActions)
+                    {
+                        if (a.GetType().Name == "DodgyDodge")
+                        {
+                            a.cost -= 100;
+                            goapC.IsInterruptedFromPlayer();  
+                        }
+                    }
+                }
+            }
+            else if (AI_Behaviour == "Defensive")
+            {
+                foreach (GoapAction a in availableActions)
+                {
+                    if (a.GetType().Name == "DodgyDodge")
+                    {
+                        a.cost -= 100;
+                        goapC.IsInterruptedFromPlayer();  
+                    }
+                }
+            }
+            else if (AI_Behaviour == "Passive")
+            {
+                foreach (GoapAction a in availableActions)
+                {
+                    if (a.GetType().Name == "DodgyDodge") //Maybe run away here or add 2 dodgydodges
+                    {
+                        a.cost -= 100;
+                        goapC.IsInterruptedFromPlayer();  
+                    }
+                }
+            }
+
+            Debug.Log("GOAP STM -> P Attacks Trigger");
+            playerAtkTriggerOnce = false;
+        }        
     }    
     public void PlayerDodgesTrigger()
     {
         //player is defensive
-        Debug.Log("GOAP STM -> P Dodges Trigger");
+        if(playerDodgeTriggerOnce)
+        {
+            if (AI_Behaviour == "Offensive")
+            {
+                foreach (GoapAction a in availableActions)
+                {
+                    if (a.GetType().Name == "ForwardRollAction") //Forward roll should be towards player in future version
+                    {
+                        a.cost -= 100;
+                        goapC.IsInterruptedFromPlayer();
+                    }
+                }
+            }
+            else if (AI_Behaviour == "Defensive")
+            {
+                foreach (GoapAction a in availableActions)
+                {
+                    if (a.GetType().Name == "SuperAttackAction") 
+                    {
+                        a.cost -= 100;
+                        goapC.IsInterruptedFromPlayer();
+                    }
+                }
+            }
+            else if (AI_Behaviour == "Passive")
+            {
+                foreach (GoapAction a in availableActions)
+                {
+                    if (a.GetType().Name == "DodgyDodge") 
+                    {
+                        a.cost -= 100;
+                        goapC.IsInterruptedFromPlayer();
+                    }
+                }
+            }
+            Debug.Log("GOAP STM -> P Dodges Trigger");
+            playerDodgeTriggerOnce = false;
+        }        
     }
     public void PlayerHealsTrigger()
     {
         //player cares
-        Debug.Log("GOAP STM -> P Heals Trigger");
+        if (playerHealTriggerOnce)
+        {
+            if (AI_Behaviour == "Offensive")
+            {
+                foreach (GoapAction a in availableActions)
+                {
+                    if (a.GetType().Name == "SuperAttackAction")
+                    {
+                        a.cost -= 100;
+                        goapC.IsInterruptedFromPlayer();
+                    }
+                }
+            }
+            else if (AI_Behaviour == "Defensive")
+            {
+                bool berserkFound = false;
+
+                foreach (GoapAction a in availableActions)
+                {
+                    if (a.GetType().Name == "BerserkAction")
+                    {
+                        a.cost -= 100;
+                        goapC.IsInterruptedFromPlayer(); //Sets the Agent to replan after current action is finished.                
+                        berserkFound = true;
+                    }
+                }
+                if (!berserkFound)
+                {
+                    foreach (GoapAction a in availableActions)
+                    {
+                        if (a.GetType().Name == "ForwardRollAction")
+                        {
+                            a.cost -= 100;
+                            goapC.IsInterruptedFromPlayer();
+                        }
+                    }
+                }
+            }
+            else if (AI_Behaviour == "Passive")
+            {
+                //FUCK OFF DO NOTHING JESUS
+            }
+            Debug.Log("GOAP STM -> P Heals Trigger");
+            playerHealTriggerOnce = false;
+        }        
     }
     public void AgentLowHealth() 
     {
@@ -89,7 +225,7 @@ public class GoapShortTermMemory : MonoBehaviour
                 if (a.GetType().Name == "HealAction")
                 {
                     //Debug.Log("STM->Interrupt");
-                    a.cost -= 200;
+                    a.cost -= 100;
                     goapC.IsInterruptedFromPlayer(); //Sets the Agent to replan after current action is finished.                
                     healFound = true;
                 }
@@ -103,7 +239,7 @@ public class GoapShortTermMemory : MonoBehaviour
                 {
                     if (a.GetType().Name == "DodgyDodge")
                     {
-                        a.cost -= 200;
+                        a.cost -= 100;
                         goapC.IsInterruptedFromPlayer(); //Sets the Agent to replan after current action is finished.                                      
                     }
                 }

@@ -157,9 +157,13 @@ public class A_FourthMeleeAction : GoapAction
                 {
                     agent.GetComponent<GoapCore>().PlayTargetAnimation(this.animAction, true);
                     actionFlag = true;
-                    animatorHook.OpenDamageColliders();
+                    animatorHook.OpenDamageCollider();
                     recoveryTimer = agent.GetComponent<GoapCore>().GetCurrentAnimationTime();
-                    //PLAY SOUND/UI STUFF HERE
+                    if(recoveryTimer >= 2f)
+                    {
+                        recoveryTimer = 2f;
+                    }
+                    SoundManager.PlaySound(SoundManager.Sound.ShieldSwing, this.transform.position);
                 }
             }
         }

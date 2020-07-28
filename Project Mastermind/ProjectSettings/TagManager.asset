@@ -9,6 +9,7 @@ TagManager:
   - Manager
   - Item
   - MainCanvas
+  - ScoreText
   layers:
   - Default
   - TransparentFX

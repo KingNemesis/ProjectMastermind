@@ -163,8 +163,12 @@ public class C_ThirdMeleeAction : GoapAction
                     agent.GetComponent<GoapCore>().PlayTargetAnimation(this.animAction, true);
                     actionFlag = true;
                     animatorHook.OpenDamageCollider();
-                    recoveryTimer = 2f; //TODO: Current action recovery time.
-                    //PLAY SOUND/UI STUFF HERE
+                    recoveryTimer = agent.GetComponent<GoapCore>().GetCurrentAnimationTime();
+                    if (recoveryTimer >= 1.5f)
+                    {
+                        recoveryTimer = 1.5f;
+                    }
+                    SoundManager.PlaySound(SoundManager.Sound.ShieldSwing, this.transform.position);
                 }
             }
         }

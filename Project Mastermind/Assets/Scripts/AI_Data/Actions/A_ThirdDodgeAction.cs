@@ -166,9 +166,13 @@ public class A_ThirdDodgeAction : GoapAction
 
                     agent.GetComponent<GoapCore>().PlayTargetAnimation(this.animAction, true);
                     actionFlag = true;
-                    animatorHook.OpenDamageCollider();
+                    animatorHook.CloseDamageColliders();
                     recoveryTimer = agent.GetComponent<GoapCore>().GetCurrentAnimationTime();
-                    //PLAY SOUND/UI STUFF HERE
+                    if(recoveryTimer >= 1f)
+                    {
+                        recoveryTimer = 1f;
+                    }
+                    SoundManager.PlaySound(SoundManager.Sound.Roll, this.transform.position);
                 }
             }
         }

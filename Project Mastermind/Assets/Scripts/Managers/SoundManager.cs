@@ -29,7 +29,9 @@ public static class SoundManager
         Rain,
         ShieldSwing,
         GenericStep,
-        LandOnGround
+        LandOnGround,
+        EnemyBerserk,
+        EnemyVoice
     }
 
     private static Dictionary<Sound, float> soundTimerDictionary;

@@ -7,7 +7,7 @@ public class C_SecondMeleeAction : GoapAction
     private bool severeDamagedEnemy = false;
     private GameObject enemy; // what enemy we attack
     private string playerTag = "Player";
-    private string animAction = "roll_forward_right";
+    private string animAction = "Attack 3";
     private bool actionFlag = false;
     private float recoveryTimer;
 
@@ -162,8 +162,12 @@ public class C_SecondMeleeAction : GoapAction
                     agent.GetComponent<GoapCore>().PlayTargetAnimation(this.animAction, true);
                     actionFlag = true;
                     animatorHook.OpenDamageCollider();
-                    recoveryTimer = 2f; //TODO: Current action recovery time.
-                    //PLAY SOUND/UI STUFF HERE
+                    recoveryTimer = agent.GetComponent<GoapCore>().GetCurrentAnimationTime();
+                    if (recoveryTimer >= 2f)
+                    {
+                        recoveryTimer = 2f;
+                    }
+                    SoundManager.PlaySound(SoundManager.Sound.ShieldSwing, this.transform.position);
                 }
             }
         }

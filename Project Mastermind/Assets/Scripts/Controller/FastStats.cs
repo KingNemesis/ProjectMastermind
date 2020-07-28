@@ -8,10 +8,10 @@ public class FastStats
     public int mana = 100;
     public float stamina = 100;
 
-    public float staminaRefreshRate = 4;
-    public float staminaDecreaseRate = 4;
+    public float staminaRefreshRate = 6;
+    public float staminaDecreaseRate = 8;
     public float rollCost = 30;
-    public float stepbackCost = 10;
+    public float stepbackCost = 20;
 
     public void HandleHealth()
     {
