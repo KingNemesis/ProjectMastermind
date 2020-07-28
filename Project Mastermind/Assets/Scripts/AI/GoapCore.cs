@@ -35,6 +35,7 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
     AnimatorHook animatorHook;
     Transform mTransform;
     Vector3 lookPosition;
+    private bool planInterrupted = false; //bool for change plans after action finished!
 
     public float rotationSpeed = 1;
     public float moveSpeed = 2;
@@ -54,6 +55,8 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
     //Combat vars
     public FastStats stats; //temp maybe
     public int health = 30;
+    private int startingHealth;
+    public int healThreshold;
     private bool isHit; 
     private float hitTimer;
     [HideInInspector]
@@ -93,7 +96,9 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
         stateMachine.pushState(idleState);
         loadActions();
 
-        goapMemory = GetComponentInChildren<GoapMemory>();        
+        goapMemory = GetComponentInChildren<GoapMemory>();
+        healThreshold =(int)(health * 0.4f);
+        startingHealth = health;
     }
     private void Update()
     {
@@ -256,7 +261,16 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
             if (action.isDone())
             {
                 //the action is done. Remove it so we can perform the next one
-                currentActions.Dequeue();
+                if (planInterrupted)
+                {
+                    fsm.popState();
+                    fsm.pushState(idleState); //reset and re-plan
+                    planInterrupted = false;
+                }
+                else
+                {
+                    currentActions.Dequeue();
+                }             
             }
 
             if (hasActionPlan())
@@ -329,6 +343,14 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
         {
             animator.Play(targetAnim);
         }
+    }
+    public float GetCurrentAnimationTime()
+    {
+        AnimatorStateInfo animationState = animator.GetCurrentAnimatorStateInfo(0);
+        AnimatorClipInfo[] myAnimatorClip = animator.GetCurrentAnimatorClipInfo(0);
+        float myTime = myAnimatorClip[0].clip.length * animationState.normalizedTime;
+        Debug.Log("Current animation time is " + myTime);
+        return myTime;
     }
     public void HandleRotation(float delta, GameObject target)
     {
@@ -416,7 +438,7 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
         if (!isHit)
         {
             isHit = true;  //Invincibility removal happens in Update method.
-            hitTimer = 1f;
+            hitTimer = 0.2f;
 
             //Sound
             SoundManager.PlaySound(SoundManager.Sound.EnemyHit, mTransform.position);
@@ -439,11 +461,30 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
 
             if (health <= 0)
             {
-                PlayTargetAnimation("Death", true);
-                animator.transform.parent = null; // in order for ragdoll to properly work
+                AgentDeath();
+            }
+            else if (health <= healThreshold)
+            {
+                Vector3 direction = action.owner.position - mTransform.position;
+                float dot = Vector3.Dot(mTransform.forward, direction);
 
-                goapMemory.AgentDeath();
-                gameObject.SetActive(false); // could just destroy instead of disabling
+                if (action.overrideReactAnim)
+                {
+                    PlayTargetAnimation(action.reactAnim, true);
+                }
+                else
+                {
+                    if (dot > 0)
+                    {
+                        PlayTargetAnimation("Get Hit Front", true, 0f, true);
+                    }
+                    else
+                    {
+                        PlayTargetAnimation("Get Hit Back", true, 0f, true);
+                    }
+                }
+
+                goapMemory.AgentLowHealth();
             }
             else
             {
@@ -572,9 +613,47 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
 
         if (health <= 0)
         {
-            PlayTargetAnimation("Death", true);
-            animator.transform.parent = null; // in order for ragdoll to properly work
-            gameObject.SetActive(false); // could just destroy instead of disabling
+            AgentDeath();
+        }
+        else if(health <= healThreshold)
+        {
+            goapMemory.AgentLowHealth();
+        }
+    }
+    private void AgentDeath()
+    {
+        PlayTargetAnimation("Death", true);
+        animator.transform.parent = null; // in order for ragdoll to properly work
+
+        goapMemory.AgentDeath();
+        gameObject.SetActive(false); // could just destroy instead of disabling
+
+        //TODO LOOT?
+    }
+    public HashSet<GoapAction> GetAvailableActions()
+    {
+        return availableActions;
+    }
+    public void IsInterruptedFromPlayer()
+    {
+        planInterrupted = true;
+        dataProvider.planAborted(currentActions.Peek()); //informs goap memory that a plan was aborted
+    }
+    public void ResetPlan()
+    {
+        stateMachine.popState();
+        stateMachine.pushState(idleState); //reset and re-plan
+    }
+    public void HealSelf(int amount)
+    {
+        //REMOVE BLOOD VFX
+        health += amount;
+        //canHeal?
+        //Proper way would be to draw estus drink from
+        //backpack script to check if its ok.
+        if (health >= startingHealth)
+        {
+            health = startingHealth;
         }
     }
     public Transform getTransform() //Useful for dir calculations.

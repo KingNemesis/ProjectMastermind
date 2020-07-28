@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(GoapShortTermMemory))]
 public class GoapMemory : MonoBehaviour
 {
     private PlayerLogManager plm;
     private StatsManager statsManager;
+    private GoapShortTermMemory goapSTM;
 
     private int plansCreated;
     private int plansCompleted;
@@ -25,6 +27,8 @@ public class GoapMemory : MonoBehaviour
         //setting up refs
         plm = GameObject.FindGameObjectWithTag("Manager").GetComponent<PlayerLogManager>();
         statsManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<StatsManager>();
+        goapSTM = this.gameObject.GetComponent<GoapShortTermMemory>();
+        goapSTM.Init(); //Initiating short term memory as well
 
         ApplyAsObserver(plm);
     }    
@@ -46,15 +50,21 @@ public class GoapMemory : MonoBehaviour
     {
         plansInterrupted++;
     }
+    public void AgentLowHealth()
+    {
+        //Debug.Log("GoapMemory interrupt");
+        combatLog.Add("Agent Low HP");
+        goapSTM.AgentLowHealth();
+    }
     #endregion
     #region PlayerInteractions
     public void AddPlayerAction(string action)
     {
         playerActionList.Add(action);
         combatLog.Add(action);
-
         playerActions++;
-        //add filter for re-plan
+
+        goapSTM.FilterPlayerAction(action);
     }
     public void ApplyAsObserver(PlayerLogManager plm) //On combat start
     {
@@ -66,7 +76,7 @@ public class GoapMemory : MonoBehaviour
         plm.RemoveObserver(this);
         combatEnd = (int)Time.time;
 
-        UpdateStatsManager(); //Send all recorded data to stats manager.
+        //UpdateStatsManager(); //Send all recorded data to stats manager.
     }
     #endregion
 
@@ -76,6 +86,7 @@ public class GoapMemory : MonoBehaviour
     }
     public void AgentDeath()
     {
+        RemoveAsObserver(plm);
         UpdateStatsManager();
     }
     public void UpdateStatsManager()

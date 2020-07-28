@@ -1,43 +1,42 @@
-﻿using System;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class A_FourthMeleeAction : GoapAction
+public class HealAction : GoapAction
 {
-    private bool killEnemy = false;
+    private bool damagedEnemy = false;
     private GameObject enemy; // what enemy we attack
     private string playerTag = "Player";
-    private string animAction = "Attack 3";
+    private string animAction = "Heal";
     private bool actionFlag = false;
     private float recoveryTimer;
 
     public float costRaisePerUse = 10f;
 
-    public A_FourthMeleeAction()
+    public HealAction()
     {
         addPrecondition("hasWeapon", true); // don't bother attacking when no weapon in hands
-        addPrecondition("damagedEnemy", true);
-        addPrecondition("severeDamagedEnemy", true);
-        addPrecondition("trickEnemy", true);
-        addEffect("killEnemy", true); // destroy his dreams
+        addEffect("damagedEnemy", true); // Not the proper way of healing an AI but works!!!
     }
 
 
     public override void reset()
     {
-        killEnemy = false;
+        damagedEnemy = false;
         enemy = null;
+
         actionFlag = false;
     }
 
     public override bool isDone()
     {
-        return killEnemy; // TODO: TRACK LATER ISDONE CONDITION
+        return damagedEnemy; // TODO: TRACK LATER ISDONE CONDITION
     }
 
     public override bool requiresInRange()
     {
-        return true; // yes we need to be near an enemy to attack.
+        return false; // yes we need to be near an enemy to attack.
     }
 
     public override bool checkProceduralPrecondition(GameObject agent)
@@ -82,8 +81,9 @@ public class A_FourthMeleeAction : GoapAction
         Animator anim = (Animator)agent.GetComponentInChildren(typeof(Animator));
         NavMeshAgent navAgent = (NavMeshAgent)agent.GetComponentInChildren(typeof(NavMeshAgent));
         //GameObject damageCollider = agent.GetComponent<GoapCore>().damageCollider;
-        AnimatorHook animatorHook = agent.GetComponentInChildren<AnimatorHook>();
+        AnimatorHook animatorHook = agent.GetComponentInChildren<AnimatorHook>();        
         GoapMemory goapM = agent.GetComponentInChildren<GoapMemory>();
+        GoapCore goapC = agent.GetComponentInParent<GoapCore>();
 
         //navAgent.enabled = false;
 
@@ -98,13 +98,13 @@ public class A_FourthMeleeAction : GoapAction
              * so it's possible we can get actual damagedEnemy
              * status from player and evaluate attack success.
              */
-            killEnemy = true; //... effect is true so we can move to next action
+            damagedEnemy = true; //... effect is true so we can move to next action
             cost += costRaisePerUse;
             navAgent.enabled = true;
-            animatorHook.CloseDamageColliders();
+            animatorHook.CloseDamageCollider();
             anim.SetBool("actionSuccess_AI", false);
-            goapM.AddAgentAction(animAction); 
-            //Debug.Log("Attack 4 has ended!");
+            goapM.AddAgentAction(animAction);
+            //Debug.Log("Attack 3 has ended!");
 
             return true;
         }
@@ -112,6 +112,10 @@ public class A_FourthMeleeAction : GoapAction
         //Becomes true during the period of attack OR getting disabled by enemy.
         if (anim.GetBool("isInteracting") != true) //Did we start animating an action...
         {
+            navAgent.enabled = false;             //...lets stop the agent for a bit shall we?
+
+            anim.SetFloat("movement", 0f, 0.1f, Time.deltaTime);
+            anim.SetFloat("sideways", 0f, 0.1f, Time.deltaTime);
 
             if (actionFlag)                                  //Check if action is happening...
             {
@@ -129,41 +133,22 @@ public class A_FourthMeleeAction : GoapAction
             }
             else                                              //...else do my action
             {
-                Vector3 dir = target.transform.position - agent.transform.position;
-                dir.y = 0;
-                dir.Normalize();
-                float dot = Vector3.Dot(transform.forward, dir);
-
-                //Debug.Log(animAction + " " + dot);
-
-                if (dot < 0) //Checking if target is in behind so we turn...
-                {
-                    Transform mTransform = agent.transform;
-
-                    navAgent.enabled = true;
-                    navAgent.SetDestination(target.transform.position);
-
-                    Vector3 relativeDirection = mTransform.InverseTransformDirection(navAgent.desiredVelocity);
-                    relativeDirection.Normalize();
-
-                    anim.SetFloat("movement", relativeDirection.z, 0.1f, Time.deltaTime);
-                    anim.SetFloat("sideways", relativeDirection.x, 0.1f, Time.deltaTime);
-
-
-                    mTransform.rotation = navAgent.transform.rotation;
-                    return true;
-                }
-                else      //...otherwise perform action
-                {
-                    agent.GetComponent<GoapCore>().PlayTargetAnimation(this.animAction, true);
-                    actionFlag = true;
-                    animatorHook.OpenDamageColliders();
-                    recoveryTimer = agent.GetComponent<GoapCore>().GetCurrentAnimationTime();
-                    //PLAY SOUND/UI STUFF HERE
-                }
+                /*
+                 * TODO: Calculate with navMesh preview a place where dodge could be done 
+                 * and make helper method to set proper animation.
+                 */
+                 agent.GetComponent<GoapCore>().PlayTargetAnimation(this.animAction, true);
+                 actionFlag = true;
+                 animatorHook.CloseDamageColliders(); //close because heal
+                 recoveryTimer = agent.GetComponent<GoapCore>().GetCurrentAnimationTime();
+                 if(recoveryTimer >= 1f)
+                 {
+                    recoveryTimer = 1f;
+                 }
+                 goapC.HealSelf(15);
+                 SoundManager.PlaySound(SoundManager.Sound.EstusDrink, this.transform.position);                
             }
         }
-
         return true;
     }
 }

@@ -113,6 +113,8 @@ public abstract class Warrior : MonoBehaviour, IGoap
         // Take note of what happened and make sure if you run the same goal again
         // that it can succeed.
         Debug.Log("<color=red>Plan Aborted</color> " + GoapAgent.prettyPrint(aborter));
+
+        goapMemory.AddAgentPlanInterrupted();
     }
 
     public bool moveAgent(GoapAction nextAction)

@@ -1,38 +1,7 @@
 Total Stats,AI Plans Created,AI Plans Completed,AI Plans Interrupted,Player Actions,Combat Duration,Combat Log
-4,10,5,0,38,73
+2,6,3,0,27,55
 Session #1 - v0.3
-Agent 1,2,1,0,8,8,A_FirstMeleeAction-> A_SecondMeleeAction-> A_ThirdDodgeAction-> A_FourthMeleeAction-> GOAL,BasicAttack1,Attack 1,BasicAttack1,Attack 2,BasicAttack1,roll_backwards_left,ParryAction,Attack 3,A_FirstMeleeAction-> A_SecondMeleeAction-> A_ThirdDodgeAction-> A_FourthMeleeAction-> GOAL,ParryAction,BasicAttack1,Attack 1,BasicAttack1,Attack 2,roll_backwards_left,BasicAttack1,7/23/2020 2:14:33 PM
-Agent 2,2,1,0,5,40,C_FirstMeleeAction-> C_SecondMeleeAction-> C_ThirdMeleeAction-> C_FourthMeleeAction-> GOAL,BasicAttack1,C Attack 1,RollAction,roll_forward_right,BasicAttack1,C Attack 2,roll_backwards,C_FirstMeleeAction-> C_SecondMeleeAction-> C_ThirdMeleeAction-> C_FourthMeleeAction-> GOAL,BasicAttack1,C Attack 1,roll_forward_right,BasicAttack1,7/23/2020 2:14:51 PM
-
-
-
-
-
-
-
-
-
-
-
-
-
+Agent 1,2,1,0,7,12,A_FirstMeleeAction-> A_SecondMeleeAction-> A_ThirdDodgeAction-> A_FourthMeleeAction-> GOAL,P:BasicAttack1,Attack 1,P:RollAction,Attack 2,P:RollAction,P:BasicAttack1,roll_backwards_left,P:BasicAttack1,Attack 3,A_FirstMeleeAction-> A_SecondMeleeAction-> A_ThirdDodgeAction-> A_FourthMeleeAction-> GOAL,Attack 1,P:BasicAttack1,Attack 2,P:BasicAttack2,7/23/2020 3:12:44 PM
 Session #2 - v0.3
-Agent 1,2,1,0,12,9,A_FirstMeleeAction-> A_SecondMeleeAction-> A_ThirdDodgeAction-> A_FourthMeleeAction-> GOAL,RollAction,RollAction,BasicAttack1,Attack 1,BasicAttack2,RollAction,BasicAttack1,Attack 2,roll_backwards_left,BasicAttack1,Attack 3,A_FirstMeleeAction-> A_SecondMeleeAction-> A_ThirdDodgeAction-> A_FourthMeleeAction-> GOAL,RollAction,BasicAttack1,Attack 1,BasicAttack2,RollAction,BasicAttack1,Attack 2,7/23/2020 2:15:46 PM
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Session #3 - v0.3
-Agent 1,2,1,0,5,8,A_FirstMeleeAction-> A_SecondMeleeAction-> A_ThirdDodgeAction-> A_FourthMeleeAction-> GOAL,BasicAttack1,Attack 1,BasicAttack2,BasicAttack1,Attack 2,roll_backwards_left,BasicAttack1,Attack 3,A_FirstMeleeAction-> A_SecondMeleeAction-> A_ThirdDodgeAction-> A_FourthMeleeAction-> GOAL,BasicAttack1,7/23/2020 2:20:40 PM
-Session #4 - v0.3
-Agent 1,2,1,0,8,8,A_FirstMeleeAction-> A_SecondMeleeAction-> A_ThirdDodgeAction-> A_FourthMeleeAction-> GOAL,BasicAttack1,Attack 1,BasicAttack2,Attack 2,BasicAttack1,roll_backwards_left,BasicAttack2,RollAction,BasicAttack1,Attack 3,A_FirstMeleeAction-> A_SecondMeleeAction-> A_ThirdDodgeAction-> A_FourthMeleeAction-> GOAL,BasicAttack2,BasicAttack1,7/23/2020 2:21:11 PM
+Agent 1,2,1,0,10,11,A_FirstMeleeAction-> A_SecondMeleeAction-> A_ThirdDodgeAction-> A_FourthMeleeAction-> GOAL,P:BasicAttack1,Attack 1,P:BasicAttack2,P:RollAction,P:EstusDrinkAction,Attack 2,P:BasicAttack1,roll_backwards_left,P:RollAction,P:BasicAttack1,Attack 3,A_FirstMeleeAction-> A_SecondMeleeAction-> A_ThirdDodgeAction-> A_FourthMeleeAction-> GOAL,P:RollAction,P:BasicAttack1,Attack 1,P:BasicAttack2,7/24/2020 2:48:19 PM
+Agent 2,2,1,0,10,32,C_FirstMeleeAction-> C_SecondMeleeAction-> C_ThirdMeleeAction-> C_FourthMeleeAction-> GOAL,P:BasicAttack1,C Attack 1,P:BasicAttack2,P:RollAction,roll_forward_right,P:RollAction,P:RollAction,C Attack 2,P:RollAction,roll_backwards,C_FirstMeleeAction-> C_SecondMeleeAction-> C_ThirdMeleeAction-> C_FourthMeleeAction-> GOAL,P:RollAction,P:RollAction,C Attack 1,P:BasicAttack1,roll_forward_right,P:BasicAttack2,7/24/2020 2:48:41 PM

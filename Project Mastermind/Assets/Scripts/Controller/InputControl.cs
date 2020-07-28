@@ -306,7 +306,7 @@ public class InputControl : MonoBehaviour
         if (Rb || Rt || Lb || Lt || LMDown || RMDown)
         {
             isAttacking = true;
-            if (Rb || RMDown)
+            if (Lb || LMDown)
             {
                 attackInput = AttackInputs.rb;
             }
@@ -314,7 +314,7 @@ public class InputControl : MonoBehaviour
             {
                 attackInput = AttackInputs.rt;
             }
-            if (Lb || LMDown)
+            if (Rb || RMDown)
             {
                 attackInput = AttackInputs.lb;
             }
