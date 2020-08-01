@@ -164,7 +164,7 @@ public class B_SecondMeleeAttack : GoapAction
                 {
                     agent.GetComponent<GoapCore>().PlayTargetAnimation(this.animAction, true);
                     actionFlag = true;
-                    animatorHook.OpenDamageColliders();
+                    animatorHook.OpenDamageCollider();
                     recoveryTimer = 2f; //TODO: Current action recovery time.
                     //PLAY SOUND/UI STUFF HERE
                 }

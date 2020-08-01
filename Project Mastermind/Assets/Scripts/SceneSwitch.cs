@@ -22,9 +22,16 @@ public class SceneSwitch : MonoBehaviour
 
     public void LoadScene(int index)
     {
-        GameObject.FindGameObjectWithTag("Manager").GetComponent<StatsManager>().InitSave();
+        if(GameObject.FindGameObjectWithTag("Manager") == null)
+        {
+            SceneManager.LoadScene(index);
+        }
+        else
+        {
+            GameObject.FindGameObjectWithTag("Manager").GetComponent<StatsManager>().InitSave();
 
-        SceneManager.LoadScene(index);
+            SceneManager.LoadScene(index);
+        }       
     }
 
     public void SaveAndExitGame()

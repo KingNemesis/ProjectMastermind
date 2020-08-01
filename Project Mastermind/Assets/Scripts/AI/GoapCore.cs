@@ -268,6 +268,7 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
                     fsm.popState();
                     fsm.pushState(idleState); //reset and re-plan
                     planInterrupted = false;
+                    return; //test
                 }
                 else
                 {
@@ -456,9 +457,9 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
             int totalDamageTaken = this.GetComponent<CombatStats>().CalculateFinalDamageTaken(action.damage, action.damageType);
             health -= totalDamageTaken;
             FloatingTextController.CreateFloatingText(totalDamageTaken.ToString(),this.transform.position); //Creating the floating combat text
-            Debug.Log("Agent " + agentID + " received " + totalDamageTaken + "damage. New health is " + health);
+            //Debug.Log("Agent " + agentID + " received " + totalDamageTaken + "damage. New health is " + health);
 
-            animatorHook.CloseDamageCollider(); //for safety
+            //animatorHook.CloseDamageCollider(); //for safety
 
 
             if (health <= 0)
@@ -526,6 +527,12 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
                 _lastAction = new ActionContainer();
             }
 
+            //Debug.Log("Trying: GAD-> " + currentActions.Peek().GetActionDamage() + " CurrentAct-> " +
+            //    currentActions.Peek().GetType().Name + " final d-> " +
+            //    this.GetComponent<CombatStats>().CalculateFinalDamageGiven(
+            //    currentActions.Peek().GetActionDamage(),
+            //    _lastAction.damageType));
+
             _lastAction.owner = mTransform; //For directional attacks
 
             /*
@@ -537,6 +544,14 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
             _lastAction.damage = this.GetComponent<CombatStats>().CalculateFinalDamageGiven(
                 currentActions.Peek().GetActionDamage(),
                 _lastAction.damageType); 
+            if(_lastAction.damage == 0)
+            {
+                _lastAction.damage = currentActions.Peek().GetActionDamage();
+                if(_lastAction.damage == 0)
+                {
+                    _lastAction.damage = 20;
+                }
+            }
 
             //TODO: Evaluate react anim (if necessary implement in goap)
             //_lastAction.overrideReactAnim = currentSnapshot.overrideReactAnim;
@@ -607,7 +622,7 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
         int totalDamageTaken = this.GetComponent<CombatStats>().CalculateFinalDamageTaken(15, "Physical"); //HARDCODE
         health -= totalDamageTaken;
         FloatingTextController.CreateFloatingText(totalDamageTaken.ToString(), this.transform.position); //Creating the floating combat text
-        Debug.Log("Agent " + agentID + " received SPECIAL " + totalDamageTaken + " damage. New health is " + health);
+        //Debug.Log("Agent " + agentID + " received SPECIAL " + totalDamageTaken + " damage. New health is " + health);
 
         animatorHook.CloseDamageCollider(); //for safety
 

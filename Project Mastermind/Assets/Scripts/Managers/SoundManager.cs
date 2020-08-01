@@ -137,7 +137,7 @@ public static class SoundManager
                 audioSource.rolloffMode = AudioRolloffMode.Linear;
                 audioSource.maxDistance = 100f;
                 audioSource.dopplerLevel = 0f;
-                audioSource.volume = 0.5f;
+                audioSource.volume = 0.7f; // old 0.5
                 audioSource.pitch = Random.Range(0.8f, 1.2f);
                 audioSource.spread = 300f;
                 audioSource.spatialize = true;

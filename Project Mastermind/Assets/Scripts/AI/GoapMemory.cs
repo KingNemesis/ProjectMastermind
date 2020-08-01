@@ -1,4 +1,4 @@
-﻿using Packages.Rider.Editor;
+﻿//using Packages.Rider.Editor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -82,7 +82,7 @@ public class GoapMemory : MonoBehaviour
 
     public int GetCombatDuration()
     {
-        return combatStart - combatEnd;
+        return combatEnd - combatStart;
     }
     public void AgentDeath()
     {

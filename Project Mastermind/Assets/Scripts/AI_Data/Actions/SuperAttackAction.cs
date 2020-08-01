@@ -139,7 +139,7 @@ public class SuperAttackAction : GoapAction
                  */
                 agent.GetComponent<GoapCore>().PlayTargetAnimation(this.animAction, true);
                 actionFlag = true;
-                animatorHook.CloseDamageColliders(); //close because heal
+                animatorHook.OpenDamageColliders(); 
                 recoveryTimer = agent.GetComponent<GoapCore>().GetCurrentAnimationTime();
                 if (recoveryTimer >= 1f)
                 {

@@ -93,7 +93,6 @@ public class GoapPlanner
     private bool buildGraph(Node parent, List<Node> leaves, HashSet<GoapAction> usableActions, HashSet<KeyValuePair<string, object>> goal)
     {
         bool foundOne = false;
-
         // go through each action available at this node and see if we can use it here
         foreach (GoapAction action in usableActions)
         {
@@ -104,7 +103,7 @@ public class GoapPlanner
 
                 // apply the action's effects to the parent state
                 HashSet<KeyValuePair<string, object>> currentState = populateState(parent.state, action.Effects);
-                //Debug.Log(GoapAgent.prettyPrint(currentState));
+                //currentState = populateState(parent.state, action.Effects);
 
                 Node node = new Node(parent, parent.runningCost + action.cost, currentState, action);
 
@@ -146,7 +145,7 @@ public class GoapPlanner
 	 * Check that all items in 'test' are in 'state'. If just one does not match or is not there
 	 * then this returns false.
 	 */
-    private bool inState(HashSet<KeyValuePair<string, object>> test, HashSet<KeyValuePair<string, object>> state)
+    private bool inState(HashSet<KeyValuePair<string, object>> test, HashSet<KeyValuePair<string, object>> state) //too many garbage
     {
         bool allMatch = true;
         foreach (KeyValuePair<string, object> t in test)
@@ -154,18 +153,82 @@ public class GoapPlanner
             bool match = false;
             foreach (KeyValuePair<string, object> s in state)
             {
-                if (s.Equals(t))
+                //if(s.ToString() == t.ToString())
+                //{
+                //    match = true;
+                //    break;
+                //}
+                //if(s.Key == t.Key)
+                //{
+                //    match = true;
+                //    break;
+                //}
+                //if (s.Equals(t))
+                //{
+                //    match = true;
+                //    break;
+                //}
+                if(s.GetHashCode() == t.GetHashCode())
                 {
                     match = true;
                     break;
                 }
             }
+
             if (!match)
                 allMatch = false;
         }
         return allMatch;
     }
+    //public class Comparer : IEqualityComparer<List<KeyValuePair<string, string>>>
+    //{
+    //    public static readonly Comparer Default = new Comparer();
+    //    private Comparer() { }
 
+    //    private static string KvpToString(KeyValuePair<string, string> kvp)
+    //    {
+    //        return (string.IsNullOrEmpty(kvp.Key) ? string.Empty : kvp.Key) + (string.IsNullOrEmpty(kvp.Value) ? string.Empty : kvp.Value);
+    //    }
+    //    public bool Equals(List<KeyValuePair<string, string>> x, List<KeyValuePair<string, string>> y)
+    //    {
+    //        var xx = x.Select(KvpToString).Aggregate((c, n) => c + n);
+    //        var yy = y.Select(KvpToString).Aggregate((c, n) => c + n);
+    //        return string.Compare(xx, yy) == 0;
+    //    }
+    //    public int GetHashCode(List<KeyValuePair<string, string>> obj)
+    //    {
+    //        return 0;
+    //    }
+    //}
+    //private bool inStateTwo(HashSet<KeyValuePair<string, object>> test, HashSet<KeyValuePair<string, object>> state)
+    //{
+
+    //    var dictionary = test.ToDictionary(h => h, h => (object)null);
+    //    var a = test.ToDictionary(i => i.Key, i => i.Value);
+    //    var b = list2.ToDictionary(i => i.Key, i => i.Value);
+    //    var result = new List<foo>();
+
+    //    foreach (var entry in a)
+    //    {
+    //        if (b.ContainsKey(entry.Key)
+    //            && entry.Value != b[entry.Key])
+    //        {
+    //            result.Add(entry.Value);
+    //            result.Add(b[entry.Key]);
+    //        }
+    //    }
+    //    foreach (var entry in b)
+    //    {
+    //        if (a.ContainsKey(entry.Key)
+    //            && entry.Value != a[entry.Key]
+    //            && !result.Contains(entry.Value))
+    //        {
+    //            result.Add(entry.Value);
+    //            result.Add(a[entry.Key]);
+    //        }
+    //    }
+    //    return true;
+    //}
     /*
 	 * Apply the stateChange to the currentState
 	 */
@@ -175,7 +238,7 @@ public class GoapPlanner
         // copy the KVPs over as new objects
         foreach (KeyValuePair<string, object> s in currentState)
         {
-            state.Add(new KeyValuePair<string, object>(s.Key, s.Value));
+            state.Add(new KeyValuePair<string, object>(s.Key, s.Value)); //GARBAGEEEEEEEE
         }
 
         foreach (KeyValuePair<string, object> change in stateChange)
@@ -185,7 +248,7 @@ public class GoapPlanner
 
             foreach (KeyValuePair<string, object> s in state)
             {
-                if (s.Equals(change))
+                if (s.Equals(change))                                    //GARBAGEEEEEEEE
                 {
                     exists = true;
                     break;
@@ -196,12 +259,12 @@ public class GoapPlanner
             {
                 state.RemoveWhere((KeyValuePair<string, object> kvp) => { return kvp.Key.Equals(change.Key); });
                 KeyValuePair<string, object> updated = new KeyValuePair<string, object>(change.Key, change.Value);
-                state.Add(updated);
+                state.Add(updated);                                           //GARBAGEEEEEEEE
             }
             // if it does not exist in the current state, add it
             else
             {
-                state.Add(new KeyValuePair<string, object>(change.Key, change.Value));
+                state.Add(new KeyValuePair<string, object>(change.Key, change.Value));     //GARBAGEEEEEEEE
             }
         }
         return state;

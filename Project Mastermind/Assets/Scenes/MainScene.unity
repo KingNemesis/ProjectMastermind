@@ -290,6 +290,86 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 2d94cb03501642a49b4dceb38866772f, type: 3}
+--- !u!1 &57453356 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2380872293273528325, guid: 2c4f873d5805a3940b6fcbd562d58c62,
+    type: 3}
+  m_PrefabInstance: {fileID: 670553268}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &57453362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57453356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bbacb813b2d5b74e8c6323711c12683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 100
+  actionDamage: 0
+  actionDamageType: Physical
+  target: {fileID: 0}
+  costRaisePerUse: 100
+--- !u!1 &81120036 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2205102766241831027, guid: 91125a26351b7464e96017c76d017254,
+    type: 3}
+  m_PrefabInstance: {fileID: 1091206170}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &81120046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81120036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a37532c8195b08342a86c5a78b1858f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 100
+  actionDamage: 27
+  actionDamageType: Physical
+  target: {fileID: 0}
+  costRaisePerUse: 100
+--- !u!114 &81120047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81120036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bbacb813b2d5b74e8c6323711c12683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 100
+  actionDamage: 0
+  actionDamageType: Physical
+  target: {fileID: 0}
+  costRaisePerUse: 100
+--- !u!114 &81120048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81120036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b24eaaec0d39c41b2da1c7501be261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 100
+  actionDamage: 0
+  actionDamageType: Physical
+  target: {fileID: 0}
+  costRaisePerUse: 100
 --- !u!1 &82617661
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,13 +479,112 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 82617661}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &90264962 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2205102766241831027, guid: 91125a26351b7464e96017c76d017254,
+    type: 3}
+  m_PrefabInstance: {fileID: 845035467}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &90264972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90264962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb3673d37335ce4da08be58b37fb3f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 100
+  actionDamage: 27
+  actionDamageType: Physical
+  target: {fileID: 0}
+  costRaisePerUse: 100
+  healAmount: 15
+--- !u!114 &90264973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90264962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a37532c8195b08342a86c5a78b1858f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 100
+  actionDamage: 40
+  actionDamageType: Physical
+  target: {fileID: 0}
+  costRaisePerUse: 100
+--- !u!1 &129561715 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2865223579567321963, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 136271157}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &129561725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129561715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d110a090a82abe447bd577cb6f242150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 100
+  actionDamage: 0
+  actionDamageType: Physical
+  target: {fileID: 0}
+  costRaisePerUse: 100
+--- !u!114 &129561726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129561715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b24eaaec0d39c41b2da1c7501be261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 100
+  actionDamage: 0
+  actionDamageType: Physical
+  target: {fileID: 0}
+  costRaisePerUse: 100
+--- !u!114 &129561727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129561715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb3673d37335ce4da08be58b37fb3f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 100
+  actionDamage: 0
+  actionDamageType: Physical
+  target: {fileID: 0}
+  costRaisePerUse: 10
+  healAmount: 20
 --- !u!1 &134140113 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2380872293273528325, guid: 2c4f873d5805a3940b6fcbd562d58c62,
     type: 3}
   m_PrefabInstance: {fileID: 180343424}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &134140119
+--- !u!114 &134140115
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -414,11 +593,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 134140113}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aee30990522887b40a309c3a7d365d40, type: 3}
+  m_Script: {fileID: 11500000, guid: 7bbacb813b2d5b74e8c6323711c12683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 100
   actionDamage: 0
+  actionDamageType: Physical
+  target: {fileID: 0}
+  costRaisePerUse: 100
+--- !u!114 &134140116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134140113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a37532c8195b08342a86c5a78b1858f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 100
+  actionDamage: 32
   actionDamageType: Physical
   target: {fileID: 0}
   costRaisePerUse: 100
@@ -719,8 +915,54 @@ PrefabInstance:
       propertyPath: health
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 287243793419175017, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: damageCollider
+      value: 
+      objectReference: {fileID: 136271158}
+    - target: {fileID: 2865223578677472282, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865223578677472282, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865223578677472282, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865223578677472282, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865223578677472282, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.314
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865223578677472282, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.091
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865223578677472283, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57d36ff6e059b8a488eea21dacc4a5e3, type: 3}
+--- !u!1 &136271158 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2865223578677472283, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 136271157}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &171595470
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -791,7 +1033,7 @@ PrefabInstance:
     - target: {fileID: 7396320908342293193, guid: 2f071b47bb0d40d41b7c59d3962d14e8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -186.83
+      value: -186.405
       objectReference: {fileID: 0}
     - target: {fileID: 7396320908342293193, guid: 2f071b47bb0d40d41b7c59d3962d14e8,
         type: 3}
@@ -1132,6 +1374,16 @@ PrefabInstance:
         type: 3}
       propertyPath: lootBonusScore
       value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 5561864423852945555, guid: 2c4f873d5805a3940b6fcbd562d58c62,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115522078447775118, guid: 2c4f873d5805a3940b6fcbd562d58c62,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 384999477, guid: 2c4f873d5805a3940b6fcbd562d58c62, type: 3}
@@ -1530,10 +1782,10 @@ MonoBehaviour:
   AI_Behaviour: Offensive
   playerAttacksTH: 3
   playerHealsTH: 1
-  playerDodgeTH: 2
-  playerAtkTriggerOnce: 1
+  playerDodgeTH: 1
+  playerAtkTriggerOnce: 0
   playerDodgeTriggerOnce: 1
-  playerHealTriggerOnce: 1
+  playerHealTriggerOnce: 0
 --- !u!1 &238350009
 GameObject:
   m_ObjectHideFlags: 0
@@ -1808,17 +2060,17 @@ PrefabInstance:
     - target: {fileID: 7203997183157124467, guid: e7fb1a59ddd1db1408f879d8b222c1dc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.01
+      value: -17.1
       objectReference: {fileID: 0}
     - target: {fileID: 7203997183157124467, guid: e7fb1a59ddd1db1408f879d8b222c1dc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.14649296
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 7203997183157124467, guid: e7fb1a59ddd1db1408f879d8b222c1dc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 134.61
+      value: 141.68
       objectReference: {fileID: 0}
     - target: {fileID: 7203997183157124467, guid: e7fb1a59ddd1db1408f879d8b222c1dc,
         type: 3}
@@ -1828,7 +2080,7 @@ PrefabInstance:
     - target: {fileID: 7203997183157124467, guid: e7fb1a59ddd1db1408f879d8b222c1dc,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.49999756
+      value: -0.9543693
       objectReference: {fileID: 0}
     - target: {fileID: 7203997183157124467, guid: e7fb1a59ddd1db1408f879d8b222c1dc,
         type: 3}
@@ -1838,7 +2090,7 @@ PrefabInstance:
     - target: {fileID: 7203997183157124467, guid: e7fb1a59ddd1db1408f879d8b222c1dc,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8660269
+      value: 0.29862893
       objectReference: {fileID: 0}
     - target: {fileID: 7203997183157124467, guid: e7fb1a59ddd1db1408f879d8b222c1dc,
         type: 3}
@@ -1853,7 +2105,7 @@ PrefabInstance:
     - target: {fileID: 7203997183157124467, guid: e7fb1a59ddd1db1408f879d8b222c1dc,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -60.000004
+      value: -145.24901
       objectReference: {fileID: 0}
     - target: {fileID: 7203997183157124467, guid: e7fb1a59ddd1db1408f879d8b222c1dc,
         type: 3}
@@ -2150,6 +2402,46 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 359970490}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &371462919 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2865223579567321963, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 889466775}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &371462929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371462919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a37532c8195b08342a86c5a78b1858f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 100
+  actionDamage: 40
+  actionDamageType: Physical
+  target: {fileID: 0}
+  costRaisePerUse: 100
+--- !u!114 &371462930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371462919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bbacb813b2d5b74e8c6323711c12683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 100
+  actionDamage: 0
+  actionDamageType: Physical
+  target: {fileID: 0}
+  costRaisePerUse: 100
 --- !u!1001 &387210870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2391,6 +2683,16 @@ PrefabInstance:
         type: 3}
       propertyPath: lootBonusScore
       value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 5561864423852945555, guid: 2c4f873d5805a3940b6fcbd562d58c62,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115522078447775118, guid: 2c4f873d5805a3940b6fcbd562d58c62,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2380872293273528328, guid: 2c4f873d5805a3940b6fcbd562d58c62, type: 3}
@@ -3468,25 +3770,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 2380872293273528328, guid: 2c4f873d5805a3940b6fcbd562d58c62,
-        type: 3}
-      propertyPath: actionDamage
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 2380872293273528329, guid: 2c4f873d5805a3940b6fcbd562d58c62,
-        type: 3}
-      propertyPath: actionDamage
-      value: 24
-      objectReference: {fileID: 0}
     - target: {fileID: 2380872293273528330, guid: 2c4f873d5805a3940b6fcbd562d58c62,
         type: 3}
       propertyPath: actionDamage
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2380872293273528331, guid: 2c4f873d5805a3940b6fcbd562d58c62,
-        type: 3}
-      propertyPath: actionDamage
-      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 2380872293538238313, guid: 2c4f873d5805a3940b6fcbd562d58c62,
         type: 3}
@@ -3502,6 +3789,31 @@ PrefabInstance:
         type: 3}
       propertyPath: health
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5561864423852945555, guid: 2c4f873d5805a3940b6fcbd562d58c62,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115522078447775118, guid: 2c4f873d5805a3940b6fcbd562d58c62,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2380872293273528328, guid: 2c4f873d5805a3940b6fcbd562d58c62,
+        type: 3}
+      propertyPath: actionDamage
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 2380872293273528329, guid: 2c4f873d5805a3940b6fcbd562d58c62,
+        type: 3}
+      propertyPath: actionDamage
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 2380872293273528331, guid: 2c4f873d5805a3940b6fcbd562d58c62,
+        type: 3}
+      propertyPath: actionDamage
+      value: 24
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 384999477, guid: 2c4f873d5805a3940b6fcbd562d58c62, type: 3}
@@ -3951,13 +4263,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5eed257be844e45bd80f25d7b72ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AI_Behaviour: Offensive
+  AI_Behaviour: Defensive
   playerAttacksTH: 3
   playerHealsTH: 1
-  playerDodgeTH: 2
-  playerAtkTriggerOnce: 1
+  playerDodgeTH: 1
+  playerAtkTriggerOnce: 0
   playerDodgeTriggerOnce: 1
-  playerHealTriggerOnce: 1
+  playerHealTriggerOnce: 0
 --- !u!43 &750450246
 Mesh:
   m_ObjectHideFlags: 0
@@ -4380,6 +4692,64 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 813310428}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &829808337 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2865223579567321963, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1525917194}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &829808347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829808337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a37532c8195b08342a86c5a78b1858f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 100
+  actionDamage: 42
+  actionDamageType: Physical
+  target: {fileID: 0}
+  costRaisePerUse: 100
+--- !u!114 &829808348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829808337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb3673d37335ce4da08be58b37fb3f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 100
+  actionDamage: 0
+  actionDamageType: Physical
+  target: {fileID: 0}
+  costRaisePerUse: 100
+  healAmount: 20
+--- !u!114 &829808349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829808337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aee30990522887b40a309c3a7d365d40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 100
+  actionDamage: 0
+  actionDamageType: Physical
+  target: {fileID: 0}
+  costRaisePerUse: 100
 --- !u!1001 &845035467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4600,10 +4970,46 @@ PrefabInstance:
     - target: {fileID: 2205102766405893919, guid: 91125a26351b7464e96017c76d017254,
         type: 3}
       propertyPath: health
-      value: 28
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534225518105669505, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: damageCollider
+      value: 
+      objectReference: {fileID: 845035468}
+    - target: {fileID: 8291018443492207186, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291018443492207186, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291018443492207186, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291018443492207187, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4580327899386777667, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: actionDamage
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91125a26351b7464e96017c76d017254, type: 3}
+--- !u!1 &845035468 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8291018443492207187, guid: 91125a26351b7464e96017c76d017254,
+    type: 3}
+  m_PrefabInstance: {fileID: 845035467}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &855229541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4624,7 +5030,7 @@ PrefabInstance:
     - target: {fileID: 7203997183157124467, guid: e7fb1a59ddd1db1408f879d8b222c1dc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4
+      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: 7203997183157124467, guid: e7fb1a59ddd1db1408f879d8b222c1dc,
         type: 3}
@@ -5174,8 +5580,54 @@ PrefabInstance:
       propertyPath: health
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 287243793419175017, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: damageCollider
+      value: 
+      objectReference: {fileID: 889466776}
+    - target: {fileID: 2865223578677472282, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865223578677472282, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865223578677472282, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865223578677472282, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.391
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865223578677472282, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.321
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865223578677472282, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.093
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865223578677472283, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57d36ff6e059b8a488eea21dacc4a5e3, type: 3}
+--- !u!1 &889466776 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2865223578677472283, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 889466775}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &903333934
 GameObject:
   m_ObjectHideFlags: 0
@@ -5261,6 +5713,46 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 196599094}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &938553822 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2205102766241831027, guid: 91125a26351b7464e96017c76d017254,
+    type: 3}
+  m_PrefabInstance: {fileID: 2004533851}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &938553832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938553822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a37532c8195b08342a86c5a78b1858f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 100
+  actionDamage: 35
+  actionDamageType: Physical
+  target: {fileID: 0}
+  costRaisePerUse: 100
+--- !u!114 &938553833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938553822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d110a090a82abe447bd577cb6f242150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 100
+  actionDamage: 0
+  actionDamageType: Physical
+  target: {fileID: 0}
+  costRaisePerUse: 100
 --- !u!1 &971410041
 GameObject:
   m_ObjectHideFlags: 0
@@ -5478,8 +5970,8 @@ MonoBehaviour:
   AI_Behaviour: Offensive
   playerAttacksTH: 3
   playerHealsTH: 1
-  playerDodgeTH: 2
-  playerAtkTriggerOnce: 1
+  playerDodgeTH: 4
+  playerAtkTriggerOnce: 0
   playerDodgeTriggerOnce: 1
   playerHealTriggerOnce: 1
 --- !u!1 &1028190013 stripped
@@ -5512,12 +6004,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5eed257be844e45bd80f25d7b72ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AI_Behaviour: Offensive
+  AI_Behaviour: Defensive
   playerAttacksTH: 3
   playerHealsTH: 1
   playerDodgeTH: 2
   playerAtkTriggerOnce: 1
-  playerDodgeTriggerOnce: 1
+  playerDodgeTriggerOnce: 0
   playerHealTriggerOnce: 1
 --- !u!1 &1030241476
 GameObject:
@@ -5762,6 +6254,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1066224471 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2205102766241831027, guid: 91125a26351b7464e96017c76d017254,
+    type: 3}
+  m_PrefabInstance: {fileID: 1477391649}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1066224473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066224471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b24eaaec0d39c41b2da1c7501be261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 100
+  actionDamage: 0
+  actionDamageType: Physical
+  target: {fileID: 0}
+  costRaisePerUse: 100
+--- !u!114 &1066224481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066224471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d110a090a82abe447bd577cb6f242150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 100
+  actionDamage: 0
+  actionDamageType: Physical
+  target: {fileID: 0}
+  costRaisePerUse: 100
 --- !u!1001 &1091206170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5959,16 +6491,6 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 2205102766241831039, guid: 91125a26351b7464e96017c76d017254,
-        type: 3}
-      propertyPath: cost
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4580327899386777665, guid: 91125a26351b7464e96017c76d017254,
-        type: 3}
-      propertyPath: cost
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2205102766405893919, guid: 91125a26351b7464e96017c76d017254,
         type: 3}
       propertyPath: agentID
@@ -5984,8 +6506,94 @@ PrefabInstance:
       propertyPath: health
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 6534225518105669505, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: damageCollider
+      value: 
+      objectReference: {fileID: 1091206171}
+    - target: {fileID: 8291018443492207186, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291018443492207186, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291018443492207186, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291018443492207187, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4580327899386777667, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: actionDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2205102766241831039, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: cost
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4580327899386777665, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: cost
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91125a26351b7464e96017c76d017254, type: 3}
+--- !u!1 &1091206171 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8291018443492207187, guid: 91125a26351b7464e96017c76d017254,
+    type: 3}
+  m_PrefabInstance: {fileID: 1091206170}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1162620986 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2865223579567321963, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1221482011}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1162620992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162620986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aee30990522887b40a309c3a7d365d40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 100
+  actionDamage: 0
+  actionDamageType: Physical
+  target: {fileID: 0}
+  costRaisePerUse: 100
+--- !u!114 &1162620993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162620986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d110a090a82abe447bd577cb6f242150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 100
+  actionDamage: 0
+  actionDamageType: Physical
+  target: {fileID: 0}
+  costRaisePerUse: 100
 --- !u!1 &1192164833 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2865223580282808191, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
@@ -6017,12 +6625,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AI_Behaviour: Offensive
-  playerAttacksTH: 3
+  playerAttacksTH: 2
   playerHealsTH: 1
   playerDodgeTH: 2
   playerAtkTriggerOnce: 1
-  playerDodgeTriggerOnce: 1
-  playerHealTriggerOnce: 1
+  playerDodgeTriggerOnce: 0
+  playerHealTriggerOnce: 0
 --- !u!1 &1213852148 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2380872294728334353, guid: 2c4f873d5805a3940b6fcbd562d58c62,
@@ -6327,12 +6935,58 @@ PrefabInstance:
       propertyPath: health
       value: 55
       objectReference: {fileID: 0}
+    - target: {fileID: 287243793419175017, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: damageCollider
+      value: 
+      objectReference: {fileID: 1221482012}
+    - target: {fileID: 2865223578677472282, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865223578677472282, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865223578677472282, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865223578677472282, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.367
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865223578677472282, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.305
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865223578677472282, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.088
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865223578677472283, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 489167322963983195, guid: 57d36ff6e059b8a488eea21dacc4a5e3, type: 3}
     - {fileID: 489167322963983192, guid: 57d36ff6e059b8a488eea21dacc4a5e3, type: 3}
     - {fileID: 489167322963983193, guid: 57d36ff6e059b8a488eea21dacc4a5e3, type: 3}
     - {fileID: 489167322963983190, guid: 57d36ff6e059b8a488eea21dacc4a5e3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 57d36ff6e059b8a488eea21dacc4a5e3, type: 3}
+--- !u!1 &1221482012 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2865223578677472283, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1221482011}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1270156951
 GameObject:
   m_ObjectHideFlags: 0
@@ -11720,7 +12374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AI_Behaviour: Offensive
-  playerAttacksTH: 3
+  playerAttacksTH: 2
   playerHealsTH: 1
   playerDodgeTH: 2
   playerAtkTriggerOnce: 1
@@ -11918,16 +12572,6 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 2205102766241831038, guid: 91125a26351b7464e96017c76d017254,
-        type: 3}
-      propertyPath: cost
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4580327899386777667, guid: 91125a26351b7464e96017c76d017254,
-        type: 3}
-      propertyPath: actionDamage
-      value: 42
-      objectReference: {fileID: 0}
     - target: {fileID: 2205102766405893919, guid: 91125a26351b7464e96017c76d017254,
         type: 3}
       propertyPath: agentID
@@ -11943,9 +12587,50 @@ PrefabInstance:
       propertyPath: health
       value: 28
       objectReference: {fileID: 0}
+    - target: {fileID: 6534225518105669505, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: damageCollider
+      value: 
+      objectReference: {fileID: 1477391650}
+    - target: {fileID: 8291018443492207186, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291018443492207186, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291018443492207186, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291018443492207187, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4580327899386777667, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: actionDamage
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2205102766241831038, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: cost
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4580327899386777678, guid: 91125a26351b7464e96017c76d017254, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 91125a26351b7464e96017c76d017254, type: 3}
+--- !u!1 &1477391650 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8291018443492207187, guid: 91125a26351b7464e96017c76d017254,
+    type: 3}
+  m_PrefabInstance: {fileID: 1477391649}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1478903597
 GameObject:
   m_ObjectHideFlags: 0
@@ -12072,7 +12757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AI_Behaviour: Offensive
-  playerAttacksTH: 3
+  playerAttacksTH: 2
   playerHealsTH: 1
   playerDodgeTH: 2
   playerAtkTriggerOnce: 1
@@ -12348,7 +13033,7 @@ PrefabInstance:
     - target: {fileID: 489167322963983193, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
         type: 3}
       propertyPath: actionDamage
-      value: 0
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 489167322963983190, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
         type: 3}
@@ -12375,8 +13060,54 @@ PrefabInstance:
       propertyPath: health
       value: 45
       objectReference: {fileID: 0}
+    - target: {fileID: 287243793419175017, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: damageCollider
+      value: 
+      objectReference: {fileID: 1525917195}
+    - target: {fileID: 2865223578677472282, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865223578677472282, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865223578677472282, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865223578677472282, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.443
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865223578677472282, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.353
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865223578677472282, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.104
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865223578677472283, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57d36ff6e059b8a488eea21dacc4a5e3, type: 3}
+--- !u!1 &1525917195 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2865223578677472283, guid: 57d36ff6e059b8a488eea21dacc4a5e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1525917194}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1573074486
 GameObject:
   m_ObjectHideFlags: 0
@@ -12962,11 +13693,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5eed257be844e45bd80f25d7b72ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AI_Behaviour: Offensive
+  AI_Behaviour: Defensive
   playerAttacksTH: 3
   playerHealsTH: 1
-  playerDodgeTH: 2
-  playerAtkTriggerOnce: 1
+  playerDodgeTH: 1
+  playerAtkTriggerOnce: 0
   playerDodgeTriggerOnce: 1
   playerHealTriggerOnce: 1
 --- !u!1 &1683372425
@@ -22692,7 +23423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb3673d37335ce4da08be58b37fb3f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 200
+  cost: 100
   actionDamage: 27
   actionDamageType: Physical
   target: {fileID: 0}
@@ -22777,12 +23508,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5eed257be844e45bd80f25d7b72ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AI_Behaviour: Offensive
-  playerAttacksTH: 3
+  AI_Behaviour: Defensive
+  playerAttacksTH: 1
   playerHealsTH: 1
   playerDodgeTH: 2
   playerAtkTriggerOnce: 1
-  playerDodgeTriggerOnce: 1
+  playerDodgeTriggerOnce: 0
   playerHealTriggerOnce: 1
 --- !u!1 &1974553156 stripped
 GameObject:
@@ -22817,8 +23548,8 @@ MonoBehaviour:
   AI_Behaviour: Offensive
   playerAttacksTH: 3
   playerHealsTH: 1
-  playerDodgeTH: 2
-  playerAtkTriggerOnce: 1
+  playerDodgeTH: 1
+  playerAtkTriggerOnce: 0
   playerDodgeTriggerOnce: 1
   playerHealTriggerOnce: 1
 --- !u!1 &2003079075
@@ -23147,6 +23878,51 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2205102766405893919, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: agentID
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2205102766405893919, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: lootBonusScore
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2205102766405893919, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: enableConsoleMessages
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2205102766405893919, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: health
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534225518105669505, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: damageCollider
+      value: 
+      objectReference: {fileID: 2004533852}
+    - target: {fileID: 8291018443492207186, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291018443492207186, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291018443492207186, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4580327899386777667, guid: 91125a26351b7464e96017c76d017254,
+        type: 3}
+      propertyPath: actionDamage
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2205102766241831039, guid: 91125a26351b7464e96017c76d017254,
         type: 3}
       propertyPath: actionDamage
@@ -23166,11 +23942,6 @@ PrefabInstance:
         type: 3}
       propertyPath: cost
       value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4580327899386777667, guid: 91125a26351b7464e96017c76d017254,
-        type: 3}
-      propertyPath: actionDamage
-      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 4580327899386777678, guid: 91125a26351b7464e96017c76d017254,
         type: 3}
@@ -23197,28 +23968,14 @@ PrefabInstance:
       propertyPath: actionDamage
       value: 19
       objectReference: {fileID: 0}
-    - target: {fileID: 2205102766405893919, guid: 91125a26351b7464e96017c76d017254,
-        type: 3}
-      propertyPath: agentID
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2205102766405893919, guid: 91125a26351b7464e96017c76d017254,
-        type: 3}
-      propertyPath: lootBonusScore
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 2205102766405893919, guid: 91125a26351b7464e96017c76d017254,
-        type: 3}
-      propertyPath: enableConsoleMessages
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2205102766405893919, guid: 91125a26351b7464e96017c76d017254,
-        type: 3}
-      propertyPath: health
-      value: 20
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91125a26351b7464e96017c76d017254, type: 3}
+--- !u!1 &2004533852 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8291018443492207187, guid: 91125a26351b7464e96017c76d017254,
+    type: 3}
+  m_PrefabInstance: {fileID: 2004533851}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2019489401
 GameObject:
   m_ObjectHideFlags: 0

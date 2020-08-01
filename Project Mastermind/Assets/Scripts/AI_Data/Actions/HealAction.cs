@@ -12,7 +12,7 @@ public class HealAction : GoapAction
     private bool actionFlag = false;
     private float recoveryTimer;
 
-    public float costRaisePerUse = 10f;
+    public float costRaisePerUse = 100f;
     public int healAmount = 15;
 
     public HealAction()

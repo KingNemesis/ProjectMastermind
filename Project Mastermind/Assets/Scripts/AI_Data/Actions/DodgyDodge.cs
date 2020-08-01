@@ -36,7 +36,7 @@ public class DodgyDodge : GoapAction
 
     public override bool requiresInRange()
     {
-        return false; // yes we need to be near an enemy to attack.
+        return true; // yes we need to be near an enemy to attack.
     }
 
     public override bool checkProceduralPrecondition(GameObject agent)

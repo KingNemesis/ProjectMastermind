@@ -20,7 +20,7 @@ public static class CSV_Manager
     };
     private static string[] sessionReportHeaders = new string[2]
     { "Session #",
-      "Version 0.3"
+      "Version 0.4"
     }; 
 
 
@@ -72,7 +72,7 @@ public static class CSV_Manager
 
         UpdateTotalStats(newPlansCreated, newPlansCompleted, newPlansInterrupted, newPlayerActions, newCombatDuration); //magic
 
-        string versionID = "v0.3"; //Probably should get this from files.
+        string versionID = "v0.4"; //Probably should get this from files.
         string sessionID = "Session #" + ReadSpecificValue(2,1) + " - " + versionID;
         
         using (StreamWriter sw = File.AppendText(GetFilePath()))

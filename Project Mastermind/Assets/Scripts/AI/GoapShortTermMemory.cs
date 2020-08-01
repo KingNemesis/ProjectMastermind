@@ -88,7 +88,7 @@ public class GoapShortTermMemory : MonoBehaviour
                 {
                     foreach (GoapAction a in availableActions)
                     {
-                        if (a.GetType().Name == "DodgyDodge")
+                        if (a.GetType().Name == "StepBackAction")
                         {
                             a.cost -= 100;
                             goapC.IsInterruptedFromPlayer();  
@@ -100,7 +100,7 @@ public class GoapShortTermMemory : MonoBehaviour
             {
                 foreach (GoapAction a in availableActions)
                 {
-                    if (a.GetType().Name == "DodgyDodge")
+                    if (a.GetType().Name == "StepBackAction")
                     {
                         a.cost -= 100;
                         goapC.IsInterruptedFromPlayer();  
@@ -119,7 +119,7 @@ public class GoapShortTermMemory : MonoBehaviour
                 }
             }
 
-            Debug.Log("GOAP STM -> P Attacks Trigger");
+            //Debug.Log("GOAP STM -> P Attacks Trigger");
             playerAtkTriggerOnce = false;
         }        
     }    
@@ -161,7 +161,7 @@ public class GoapShortTermMemory : MonoBehaviour
                     }
                 }
             }
-            Debug.Log("GOAP STM -> P Dodges Trigger");
+            //Debug.Log("GOAP STM -> P Dodges Trigger");
             playerDodgeTriggerOnce = false;
         }        
     }
@@ -187,7 +187,7 @@ public class GoapShortTermMemory : MonoBehaviour
 
                 foreach (GoapAction a in availableActions)
                 {
-                    if (a.GetType().Name == "BerserkAction")
+                    if (a.GetType().Name == "JogBackAction")
                     {
                         a.cost -= 100;
                         goapC.IsInterruptedFromPlayer(); //Sets the Agent to replan after current action is finished.                
@@ -210,7 +210,7 @@ public class GoapShortTermMemory : MonoBehaviour
             {
                 //FUCK OFF DO NOTHING JESUS
             }
-            Debug.Log("GOAP STM -> P Heals Trigger");
+            //Debug.Log("GOAP STM -> P Heals Trigger");
             playerHealTriggerOnce = false;
         }        
     }
@@ -237,7 +237,7 @@ public class GoapShortTermMemory : MonoBehaviour
                 //2. Play dodgy
                 foreach (GoapAction a in availableActions)
                 {
-                    if (a.GetType().Name == "DodgyDodge")
+                    if (a.GetType().Name == "JogBackAction")
                     {
                         a.cost -= 100;
                         goapC.IsInterruptedFromPlayer(); //Sets the Agent to replan after current action is finished.                                      

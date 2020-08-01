@@ -23,6 +23,7 @@ public abstract class Warrior : MonoBehaviour, IGoap
     public RaycastHit rayHit;
     private Transform target;
 
+    public float attackDistance = 2.1f;
     public float moveSpeed = 2; //used in goap core currently --- v2.3
 
     private GoapMemory goapMemory;
@@ -61,14 +62,14 @@ public abstract class Warrior : MonoBehaviour, IGoap
     {
         HashSet<KeyValuePair<string, object>> worldData = new HashSet<KeyValuePair<string, object>>();
 
-        worldData.Add(new KeyValuePair<string, object>("hasPotion", (backpack.numPotions > 0))); //TODO: Implement this!
+        //worldData.Add(new KeyValuePair<string, object>("hasPotion", (backpack.numPotions > 0))); //TODO: Implement this!
         worldData.Add(new KeyValuePair<string, object>("hasWeapon", (backpack.weapon != null)));
 
-        worldData.Add(new KeyValuePair<string, object>("isHealthy", (combatStats.healthPoints > 50)));
-        worldData.Add(new KeyValuePair<string, object>("isDisabled", (combatStats.isDisabled == true)));
-        worldData.Add(new KeyValuePair<string, object>("isSlowed", (combatStats.isSlowed == true)));
+        //worldData.Add(new KeyValuePair<string, object>("isHealthy", (combatStats.healthPoints > 50)));
+        //worldData.Add(new KeyValuePair<string, object>("isDisabled", (combatStats.isDisabled == true)));
+        //worldData.Add(new KeyValuePair<string, object>("isSlowed", (combatStats.isSlowed == true)));
 
-        worldData.Add(new KeyValuePair<string, object>("isAware", (combatStats.isAware == true)));
+        //worldData.Add(new KeyValuePair<string, object>("isAware", (combatStats.isAware == true)));
 
         return worldData;
     }
@@ -92,7 +93,7 @@ public abstract class Warrior : MonoBehaviour, IGoap
     public void planFound(HashSet<KeyValuePair<string, object>> goal, Queue<GoapAction> actions)
     {
         // Yay we found a plan for our goal
-        Debug.Log("<color=green>Plan found</color> " + GoapAgent.prettyPrint(actions));
+        //Debug.Log("<color=green>Plan found</color> " + GoapAgent.prettyPrint(actions));
 
         //NOTE: If we implement plan out of combat we have to filter here.
         goapMemory.AddAgentPlan(GoapAgent.prettyPrint(actions));
@@ -112,29 +113,33 @@ public abstract class Warrior : MonoBehaviour, IGoap
         // An action bailed out of the plan. State has been reset to plan again.
         // Take note of what happened and make sure if you run the same goal again
         // that it can succeed.
-        Debug.Log("<color=red>Plan Aborted</color> " + GoapAgent.prettyPrint(aborter));
+        //Debug.Log("<color=red>Plan Aborted</color> " + GoapAgent.prettyPrint(aborter));
 
         goapMemory.AddAgentPlanInterrupted();
     }
 
     public bool moveAgent(GoapAction nextAction)
     {
-        //TODO: Add moveSpeed && distance checkers per action.
-        this.navAgent.SetDestination(nextAction.target.transform.position);
-        Transform mTransform = this.transform;
+        float distance = attackDistance + 1f;
 
-        Vector3 relativeDirection = mTransform.InverseTransformDirection(navAgent.desiredVelocity);
-        relativeDirection.Normalize();
+        if(navAgent != null)
+        {
+            //TODO: Add moveSpeed && distance checkers per action.
+            this.navAgent.SetDestination(nextAction.target.transform.position);
+            Transform mTransform = this.transform;
 
-        anim.SetFloat("movement", relativeDirection.z, 0.1f, Time.deltaTime);
-        anim.SetFloat("sideways", relativeDirection.x, 0.1f, Time.deltaTime);
+            Vector3 relativeDirection = mTransform.InverseTransformDirection(navAgent.desiredVelocity);
+            relativeDirection.Normalize();
 
-        navAgent.enabled = true;
-        mTransform.rotation = navAgent.transform.rotation;
+            anim.SetFloat("movement", relativeDirection.z, 0.1f, Time.deltaTime);
+            anim.SetFloat("sideways", relativeDirection.x, 0.1f, Time.deltaTime);
 
-        float distance = (nextAction.target.transform.position - this.gameObject.transform.position).magnitude;
+            navAgent.enabled = true;
+            mTransform.rotation = navAgent.transform.rotation;
 
-        if (distance <= 2.1f) //2.1f is good enough for melee classes like warrior (Based on player/AI model size)
+            distance = (nextAction.target.transform.position - this.gameObject.transform.position).magnitude;                        
+        }
+        if (distance <= attackDistance) //2.1f is good enough for melee classes like warrior (Based on player/AI model size)
         {
             nextAction.setInRange(true);
             return true;
