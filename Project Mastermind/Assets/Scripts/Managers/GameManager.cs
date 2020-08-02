@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour //Stats Manager derives from Monobehavi
 
     void Awake()
     {
-        MakeSingleton();
+        //MakeSingleton();
         SetUpAudio(); //Audio works the same for all scenes so its meant to be here.
         FloatingTextController.Initialize(); //Initializing our floating combat text controller.
     }

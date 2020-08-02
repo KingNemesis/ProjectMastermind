@@ -655,7 +655,7 @@ public class Controller : MonoBehaviour, IDamageEntity, IDamageable, IParryable
             {
                 stats.health = 0;
                 //GAME OVER STUFF HERE
-                Debug.Log("I DEAD");
+                //Debug.Log("I DEAD");
                 PlayTargetAnimation("Death", true);
                 rigidbody.isKinematic = true;
                 TempUI.singleton.HandleDeath();
@@ -684,6 +684,13 @@ public class Controller : MonoBehaviour, IDamageEntity, IDamageable, IParryable
                 }
             }
         }
+    }
+    
+    public void PlayerDeath()
+    {
+        PlayTargetAnimation("Death", true);
+        rigidbody.isKinematic = true;
+        TempUI.singleton.HandleDeath();
     }
     #endregion
 

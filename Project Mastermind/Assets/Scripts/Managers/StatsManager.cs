@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
+using System.Threading;
 
 [Serializable]
 public class StatsManager : MonoBehaviour  //This class provides save system integrity and can be used to access most useful info without referencing one billion managers.
@@ -15,8 +17,16 @@ public class StatsManager : MonoBehaviour  //This class provides save system int
 
     string[] reportStrings = new string[15]; //15 is the total number of agents in the scene.
     int agentReportStep = 0;
-    bool saveOnce = true;
+    //bool saveOnce = true;
 
+
+    bool initQuestText = true;
+    float timerA;
+    float timerB;
+    GameObject questText;
+    string questTextA = "Fight all enemies(";
+    string questTextB = "/13)";
+    int deathCount = 0;
 
 
     //TODO: Convert stuff to protected internal.
@@ -78,11 +88,39 @@ public class StatsManager : MonoBehaviour  //This class provides save system int
     public int faith = 11;
     public int luck = 11;
 
+    void Start()
+    {
+        timerA = Time.timeSinceLevelLoad + 10f;
+        questText = GameObject.Find("Quest Text");
+        questText.SetActive(false);
+    }
     void Update()
     {
+        if (initQuestText)
+        {
+            timerB = Time.timeSinceLevelLoad;
+             if (timerA<= timerB)
+             {
+                questText.SetActive(true);
+                initQuestText = false;
+             }
+        }
+        
         if (Input.GetKeyDown(KeyCode.F4))
         {
             InitSave();
+        }
+    }
+    public void UpdateQuestText()
+    {
+        if(questText != null)
+        {
+            questText.GetComponentInChildren<Text>().text = questTextA + deathCount + questTextB;
+        }        
+
+        if(deathCount == 13)
+        {
+            TempUI.singleton.HandleVictory();
         }
     }
 
@@ -112,6 +150,8 @@ public class StatsManager : MonoBehaviour  //This class provides save system int
         reportStrings[agentReportStep] = agentString;
 
         agentReportStep++;
+        deathCount++;
+        UpdateQuestText();
 
         //Debug.Log(agentString);
     }
@@ -124,17 +164,8 @@ public class StatsManager : MonoBehaviour  //This class provides save system int
         //3. Append session
         //4. Append Agents
         
-        if (saveOnce)
-        {
             CSV_Manager.AppendToReportSession(reportStrings, newPlansCreated, newPlansCompleted,
                 newPlansInterrupted, newPlayerActions, newCombatDuration);
-
-            saveOnce = false;
-        }
-        else
-        {
-            Debug.Log("Can't save more than once. Please restart the game.");
-        }
     }
     //GETTERS
     public Vector3 GetPlayerPos()

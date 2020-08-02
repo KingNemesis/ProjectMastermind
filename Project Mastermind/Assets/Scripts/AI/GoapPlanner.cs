@@ -13,6 +13,7 @@ public class GoapPlanner
 	 * Returns null if a plan could not be found, or a list of the actions
 	 * that must be performed, in order, to fulfill the goal.
 	 */
+    
     public Queue<GoapAction> plan(GameObject agent,
                                   HashSet<GoapAction> availableActions,
                                   HashSet<KeyValuePair<string, object>> worldState,
@@ -37,8 +38,12 @@ public class GoapPlanner
         // build up the tree and record the leaf nodes that provide a solution to the goal.
         List<Node> leaves = new List<Node>();
 
+        //TEST
+        //HashSet<KeyValuePair<string, object>> state = new HashSet<KeyValuePair<string, object>>();
+
         // build graph
         Node start = new Node(null, 0, worldState, null);
+
         bool success = buildGraph(start, leaves, usableActions, goal);
 
         if (!success)
@@ -123,7 +128,7 @@ public class GoapPlanner
                 }
             }
         }
-
+        
         return foundOne;
     }
 
@@ -163,17 +168,18 @@ public class GoapPlanner
                 //    match = true;
                 //    break;
                 //}
-                //if (s.Equals(t))
-                //{
-                //    match = true;
-                //    break;
-                //}
-                if(s.GetHashCode() == t.GetHashCode())
-                {
-                    match = true;
-                    break;
-                }
+            if (s.Equals(t))
+            {
+                //Debug.Log(s.ToString() + " + " + t.ToString());
+                match = true;
+                break;
             }
+            //if(s.GetHashCode() == t.GetHashCode())
+            //{
+            //    match = true;
+            //    break;
+            //}
+        }
 
             if (!match)
                 allMatch = false;
@@ -235,6 +241,8 @@ public class GoapPlanner
     private HashSet<KeyValuePair<string, object>> populateState(HashSet<KeyValuePair<string, object>> currentState, HashSet<KeyValuePair<string, object>> stateChange)
     {
         HashSet<KeyValuePair<string, object>> state = new HashSet<KeyValuePair<string, object>>();
+        //state.Clear();
+        //KeyValuePair<string, object> kvp = new KeyValuePair<string, object>(null, null);
         // copy the KVPs over as new objects
         foreach (KeyValuePair<string, object> s in currentState)
         {
@@ -250,6 +258,7 @@ public class GoapPlanner
             {
                 if (s.Equals(change))                                    //GARBAGEEEEEEEE
                 {
+                    //Debug.Log(s.GetType().Name + " + " + change.GetType().Name);
                     exists = true;
                     break;
                 }

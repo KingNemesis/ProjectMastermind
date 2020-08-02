@@ -10,6 +10,7 @@ public class TempUI : MonoBehaviour
     public GameObject pickupText;
     public GameObject deathText;
     public GameObject pauseText;
+    public GameObject victoryText;
 
     public IconImageHook quick_lh;
     public IconImageHook quick_rh;
@@ -104,6 +105,11 @@ public class TempUI : MonoBehaviour
     public void HandleDeath()
     {
         deathText.SetActive(true);
+    }
+
+    public void HandleVictory()
+    {
+        victoryText.SetActive(true);
     }
 
     public void HandlePauseMenu()

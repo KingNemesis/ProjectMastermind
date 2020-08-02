@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryManager_temp : MonoBehaviour
 {
     WeaponHolderHook leftHook;
     private WeaponItem leftItem;
+    public Text healText;
 
     public bool isLeftEmpty {
         get {
@@ -184,6 +186,7 @@ public class InventoryManager_temp : MonoBehaviour
             if (_currentConsumable.amount > 0)
             {
                 targetAnim = _currentConsumable.consumableBase.consumeAnimation;
+                UpdateUI_Heals_Patch(_currentConsumable.amount - 1);
             }
             else
             {
@@ -194,6 +197,10 @@ public class InventoryManager_temp : MonoBehaviour
         }
 
         return retVal;
+    }
+    private void UpdateUI_Heals_Patch(int amount) //PATCH
+    {
+        healText.text = amount.ToString();
     }
 
     public void ConsumeItemActual()

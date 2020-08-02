@@ -448,10 +448,13 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
 
             //VFX
             GameObject blood = ObjectPool.GetObject("BloodFX");
-            blood.transform.position = mTransform.position + Vector3.up * 1f;
-            blood.transform.rotation = mTransform.rotation;
-            blood.transform.SetParent(mTransform);
-            blood.SetActive(true);
+            if(blood != null) //dirty patch
+            {
+                blood.transform.position = mTransform.position + Vector3.up * 1f;
+                blood.transform.rotation = mTransform.rotation;
+                blood.transform.SetParent(mTransform);
+                blood.SetActive(true);
+            }            
 
             // Defensive ->Pulling defensive stats here
             int totalDamageTaken = this.GetComponent<CombatStats>().CalculateFinalDamageTaken(action.damage, action.damageType);
@@ -613,11 +616,14 @@ public sealed class GoapCore : MonoBehaviour, ILockable, IDamageable, IDamageEnt
 
         //VFX
         GameObject blood = ObjectPool.GetObject("BloodFX");
-        blood.transform.position = mTransform.position + Vector3.up * 1f;
-        blood.transform.rotation = mTransform.rotation;
-        blood.transform.SetParent(mTransform);
-        blood.SetActive(true);
-
+        if(blood != null) //dirty patch
+        {
+            blood.transform.position = mTransform.position + Vector3.up * 1f;
+            blood.transform.rotation = mTransform.rotation;
+            blood.transform.SetParent(mTransform);
+            blood.SetActive(true);
+        }
+        
         // Defensive ->Pulling defensive stats here
         int totalDamageTaken = this.GetComponent<CombatStats>().CalculateFinalDamageTaken(15, "Physical"); //HARDCODE
         health -= totalDamageTaken;
